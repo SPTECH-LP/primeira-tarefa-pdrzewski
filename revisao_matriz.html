@@ -5,13 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revisão Matriz</title>
 </head>
+
+<style>
+    .container {
+        background-color: blue;
+        text-align: center;
+        width: 300px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+    .item {
+        background-color: red;
+        width: 50px;
+        margin: 5px;
+    }
+</style>
+
 <body>
     
+    <div class="container" id="div_matriz">
+
+    </div>
+
+    <button onclick="montarMatriz()">Montar Matriz</button>
+
+    <input type="text" id="ipt_linha" placeholder="qtdLinhas">
+    <input type="text" id="ipt_coluna" placeholder="coluna">
+
+    <button onclick="consulta()">Consultar</button>
+
+    <div id="resposta"></div>
+
 </body>
 
-<script>
+<script><div class="container" id="div_matriz">
 
+</div>
+    let minhaMatriz = []
 
+    function montarMatriz () {
+        let qtdLinhas = 3
+        let qtdColunas = 3
+
+        let valorInicial = 5
+
+        for (let i = 0; i < qtdLinhas; i++) {
+            minhaMatriz[i] = []
+            for (let j = 0; j < qtdColunas; j++) {
+                minhaMatriz[i][j] = valorInicial
+                valorInicial += 5
+
+                div_matriz.innerHTML += `
+                    <div class="item">${minhaMatriz[i][j]}</div>
+                `
+            }
+        }
+    }
+
+    function consulta () {
+        let linha = Number(ipt_linha.value)
+        let coluna = Number(ipt_coluna.value)
+
+        let valor = minhaMatriz[linha][coluna]
+        resposta.innerHTML = `O valor da linha ${linha} e da coluna ${coluna} é: ${valor}`
+    }
 
 </script>
 
